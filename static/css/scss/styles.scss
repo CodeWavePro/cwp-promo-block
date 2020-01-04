@@ -1,0 +1,20 @@
+// Colors variables.
+$brand: #58c800;
+$white: #f9f9f9;
+$text: #323232;
+$error: #ff3e3e;
+
+/**
+ * Short transition writing.
+ * @param $time is for seconds or miliseconds.
+ * Example: @include transition(300ms).
+ */
+@mixin transition($time) {
+    transition: all ease-in-out $time
+}
+
+.cwppb {
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat
+}
