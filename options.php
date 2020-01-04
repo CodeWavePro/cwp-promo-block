@@ -10,10 +10,24 @@ $options = [
         'desc'  => esc_html__( 'Please enter promo title text', 'mebel-laim' )
     ],
 
+    'promo_title_color'    => [
+        'type'  => 'color-picker',
+        'value' => '#f9f9f9',
+        'label' => esc_html__( 'Promo Title Color', 'mebel-laim' ),
+        'desc'  => esc_html__( 'Please choose color from pallete or enter its value in HEX', 'mebel-laim' )
+    ],
+
     'promo_text'  => [
         'type'  => 'text',
         'label' => esc_html__( 'Promo Text', 'mebel-laim' ),
         'desc'  => esc_html__( 'Please enter promo text', 'mebel-laim' )
+    ],
+
+    'promo_text_color'    => [
+        'type'  => 'color-picker',
+        'value' => '#f9f9f9',
+        'label' => esc_html__( 'Promo Text Color', 'mebel-laim' ),
+        'desc'  => esc_html__( 'Please choose color from pallete or enter its value in HEX', 'mebel-laim' )
     ],
 
     'promo_background_image' => [
@@ -55,5 +69,11 @@ $options = [
             'value' => 'no',
             'label' => esc_html__( 'No', 'mebel-laim' )
         ]
+    ],
+
+    'promo_height'  => [
+        'type'  => 'text',
+        'label' => esc_html__( 'Promo Block Height (px)', 'mebel-laim' ),
+        'desc'  => esc_html__( 'Please enter height value for promo block in pixels', 'mebel-laim' )
     ]
 ];
