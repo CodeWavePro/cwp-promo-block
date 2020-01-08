@@ -44,8 +44,9 @@ switch ( $atts['is_overlay']['choice'] ) {
 }
 // Promo background color.
 $promo_background_color = ( isset( $atts['promo_background_color'] ) && $atts['promo_background_color'] ) ? $atts['promo_background_color'] : '#f9f9f9';
-// Promo top & bottom padding value.
-$promo_padding = ( isset( $atts['promo_padding'] ) && $atts['promo_padding'] ) ? $atts['promo_padding'] . 'px' : '0';
+// Promo vertical and horizontal padding value.
+$promo_padding_vertical = ( isset( $atts['promo_padding_vertical'] ) && $atts['promo_padding_vertical'] ) ? $atts['promo_padding_vertical'] . 'px' : '0';
+$promo_padding_horizontal = ( isset( $atts['promo_padding_horizontal'] ) && $atts['promo_padding_horizontal'] ) ? $atts['promo_padding_horizontal'] . 'px' : '0';
 
 /**
  * Promo title text and style.
@@ -57,6 +58,20 @@ $promo_title_style = 'font-size: ' . ( ( isset( $atts['promo_title_size'] ) && $
 $promo_title_style .= 'margin-bottom: ' . ( ( isset( $atts['promo_title_margin'] ) && $atts['promo_title_margin'] ) ? $atts['promo_title_margin'] . 'px;' : '15px;' );
 // Text color.
 $promo_title_style .= 'color: ' . ( ( isset( $atts['promo_title_color'] ) && $atts['promo_title_color'] ) ? $atts['promo_title_color'] : '#323232' ) . ';';
+// Position.
+switch ( $atts['promo_title_position'] ) {
+	case 'center':
+		$promo_title_style .= 'text-align: center;';
+		break;
+
+	case 'right':
+		$promo_title_style .= 'text-align: right;';
+		break;
+
+	default:
+		$promo_title_style .= 'text-align: left;';
+		break;
+}
 
 /**
  * Promo text and style.
@@ -66,6 +81,20 @@ $promo_text = ( isset( $atts['promo_text'] ) && $atts['promo_text'] ) ? $atts['p
 $promo_text_style = 'font-size: ' . ( ( isset( $atts['promo_text_size'] ) && $atts['promo_text_size'] ) ? $atts['promo_text_size'] . 'px;' : '18px;' );
 // Promo text color.
 $promo_text_style .= 'color: ' . ( ( isset( $atts['promo_text_color'] ) && $atts['promo_text_color'] ) ? $atts['promo_text_color'] : '#323232' ) . ';';
+// Position.
+switch ( $atts['promo_text_position'] ) {
+	case 'center':
+		$promo_text_style .= 'text-align: center;';
+		break;
+
+	case 'right':
+		$promo_text_style .= 'text-align: right;';
+		break;
+
+	default:
+		$promo_text_style .= 'text-align: left;';
+		break;
+}
 
 /**
  * Promo button link, text and other.
@@ -101,7 +130,7 @@ $section_styles = 'background-image: url(' . $background_image_for_section . ');
 				   background-attachment: ' . $background_attachment_for_section;
 // ALL STYLES FOR BLOCK.
 $block_styles = 'background-image: url(' . $background_image_for_block . ');
-				 padding: ' . $promo_padding . ' 0;
+				 padding: ' . $promo_padding_vertical . ' ' . $promo_padding_horizontal . ';
 				 background-attachment: ' . $background_attachment_for_block;
 ?>
 
@@ -134,15 +163,15 @@ $block_styles = 'background-image: url(' . $background_image_for_block . ');
 					}
 					?>
 
-				 	<h2 class = "cwppb__title"
-				 		style = "<?php echo esc_attr( $promo_title_style ) ?>">
+				 	<h2 class = "cwppb__title" style = "<?php echo esc_attr( $promo_title_style ) ?>">
 				 		<?php echo esc_html( $promo_title ) ?>
 				 	</h2>
 
-				 	<p class = "cwppb__text"
-				 	   style = "<?php echo esc_attr( $promo_text_style ) ?>">
-				 		<?php echo esc_html( $promo_text ) ?>
-				 	</p>
+				 	<div class = "cwppb-text-wrapper" style = "<?php echo esc_attr( $promo_text_style ) ?>">
+				 		<p class = "cwppb__text">
+					 		<?php echo esc_html( $promo_text ) ?>
+					 	</p>
+				 	</div>
 
 				 	<div class = "cwppb-button-wrapper" style = "<?php echo esc_attr( $promo_button_wrapper_style ) ?>">
 				 		<a class = "button"
