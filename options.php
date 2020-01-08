@@ -4,10 +4,34 @@ if ( !defined( 'FW' ) ) {
 }
 
 $options = [
+    'promo_is_full_width'  => [
+        'type'  => 'switch',
+        'label' => esc_html__( 'Full Width?', 'mebel-laim' ),
+        'desc'  => esc_html__( 'Please choose "Yes" to make promo block full-width', 'mebel-laim' )
+    ],
+
+    'promo_padding'  => [
+        'type'  => 'text',
+        'label' => esc_html__( 'Block Padding (px)', 'mebel-laim' ),
+        'desc'  => esc_html__( 'Please enter promo block padding value in pixels', 'mebel-laim' )
+    ],
+
     'promo_title'  => [
         'type'  => 'text',
         'label' => esc_html__( 'Promo Title', 'mebel-laim' ),
         'desc'  => esc_html__( 'Please enter promo title text', 'mebel-laim' )
+    ],
+
+    'promo_title_size'  => [
+        'type'  => 'text',
+        'label' => esc_html__( 'Promo Title Size (px)', 'mebel-laim' ),
+        'desc'  => esc_html__( 'Please enter promo title size value in pixels', 'mebel-laim' )
+    ],
+
+    'promo_title_margin'  => [
+        'type'  => 'text',
+        'label' => esc_html__( 'Promo Title Margin Bottom (px)', 'mebel-laim' ),
+        'desc'  => esc_html__( 'Please enter promo title margin bottom value in pixels', 'mebel-laim' )
     ],
 
     'promo_title_color'    => [
@@ -23,6 +47,12 @@ $options = [
         'desc'  => esc_html__( 'Please enter promo text', 'mebel-laim' )
     ],
 
+    'promo_text_size'  => [
+        'type'  => 'text',
+        'label' => esc_html__( 'Promo Text Size (px)', 'mebel-laim' ),
+        'desc'  => esc_html__( 'Please enter promo text size value in pixels', 'mebel-laim' )
+    ],
+
     'promo_text_color'    => [
         'type'  => 'color-picker',
         'value' => '#f9f9f9',
@@ -35,6 +65,57 @@ $options = [
         'label'         => esc_html__( 'Promo Background Image', 'mebel-laim' ),
         'desc'          => esc_html__( 'Please upload background image or choose existing from library', 'mebel-laim' ),
         'images_only'   => true
+    ],
+
+    'is_background_image_fixed'  => [
+        'type'  => 'switch',
+        'label' => esc_html__( 'Fixed Background Image?', 'mebel-laim' ),
+        'desc'  => esc_html__( 'Please choose "Yes" to make background image fixed', 'mebel-laim' )
+    ],
+
+    'is_overlay' => [
+        'type'  => 'multi-picker',
+        'label' => false,
+        'desc'  => false,
+        'value' => [
+            'choice'    => 'yes'
+        ],
+
+        'picker'    => [
+            'choice'    => [
+                'type'      => 'select',
+                'label'     => esc_html__( 'Add Background Image Overlay?', 'mebel-laim' ),
+                'desc'      => esc_html__( 'Please choose if background image has overlay', 'mebel-laim' ),
+                'choices'   => [
+                    'yes'   => esc_html__( 'Yes', 'mebel-laim' ),
+                    'no'    => esc_html__( 'No', 'mebel-laim')
+                ]
+            ]
+        ],
+
+        'choices'   => [
+            'yes'   => [
+                'overlay_color'     => [
+                    'type'  => 'color-picker',
+                    'label' => esc_html__( 'Background Overlay Color', 'mebel-laim' ),
+                    'desc'  => esc_html__( 'Please choose color or write its value in HEX', 'mebel-laim' ),
+                    'value' => '#fff'
+                ],
+
+                'overlay_opacity'   => [
+                    'type'          => 'slider',
+                    'label'         => esc_html__( 'Overlay Opacity', 'mebel-laim' ),
+                    'desc'          => esc_html__( 'Please select the overlay opacity (0 - min color, 1 - max color)', 'mebel-laim' ),
+                    'value'         => 0.5,
+                    'properties'    => [
+                        'min'   => 0,
+                        'max'   => 1,
+                        'step'  => 0.05
+                    ]
+                ]
+            ]
+        ],
+        'show_borders'  => false
     ],
 
     'promo_background_color'    => [
@@ -56,6 +137,25 @@ $options = [
         'desc'  => esc_html__( 'Please enter promo link button text', 'mebel-laim' )
     ],
 
+    'promo_button_position' => [
+        'type'      => 'radio',
+        'value'     => 'left',
+        'label'     => esc_html__( 'Promo Button Position', 'mebel-laim' ),
+        'desc'      => esc_html__( 'Please choose side where button will be placed', 'mebel-laim' ),
+        'inline'    => true,
+        'choices'   => [
+            'left'      => esc_html__( 'Left', 'mebel-laim' ),
+            'center'    => esc_html__( 'Center', 'mebel-laim' ),
+            'right'     => esc_html__( 'Right', 'mebel-laim' )
+        ]
+    ],
+
+    'promo_button_margin'  => [
+        'type'  => 'text',
+        'label' => esc_html__( 'Button Margin Top (px)', 'mebel-laim' ),
+        'desc'  => esc_html__( 'Please enter promo button margin top value in pixels', 'mebel-laim' )
+    ],
+
     'open_in_a_new_tab' => [
         'type'  => 'switch',
         'value' => 'yes',
@@ -69,11 +169,5 @@ $options = [
             'value' => 'no',
             'label' => esc_html__( 'No', 'mebel-laim' )
         ]
-    ],
-
-    'promo_height'  => [
-        'type'  => 'text',
-        'label' => esc_html__( 'Promo Block Height (px)', 'mebel-laim' ),
-        'desc'  => esc_html__( 'Please enter height value for promo block in pixels', 'mebel-laim' )
     ]
 ];

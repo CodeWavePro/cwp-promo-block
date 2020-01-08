@@ -18,3 +18,32 @@ $error: #ff3e3e;
     background-position: center center;
     background-repeat: no-repeat
 }
+
+.cwppb-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%
+}
+
+.cwppb__text {
+    position: relative;
+    max-width: 80%
+}
+
+@media (max-width: 767px) {
+    .cwppb__title {
+        font-size: 30px !important;
+        text-align: center
+    }
+
+    .cwppb__text {
+        max-width: 100%;
+        font-size: 14px !important
+    }
+
+    .cwppb-button-wrapper {
+        text-align: center !important
+    }
+}
