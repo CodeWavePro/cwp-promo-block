@@ -30,7 +30,22 @@ $options = [
                 'type'          => 'upload',
                 'label'         => esc_html__( 'Promo Background Image', 'mebel-laim' ),
                 'desc'          => esc_html__( 'Please upload background image or choose existing from library', 'mebel-laim' ),
-                'images_only'   => true
+                'images_only'   => true,
+                'sizes'         => ['thumbnail', 'medium', 'large', 'full']
+            ],
+
+            'background_image_quality' => [
+                'type'      => 'radio',
+                'value'     => 'full',
+                'label'     => esc_html__( 'Background Image Quality', 'mebel-laim' ),
+                'desc'      => esc_html__( 'Please choose the quality of background image', 'mebel-laim' ),
+                'inline'    => false,
+                'choices'   => [
+                    'thumbnail' => esc_html__( 'Thumbnail (150x150)', 'mebel-laim' ),
+                    'medium'    => esc_html__( 'Medium (300x300)', 'mebel-laim' ),
+                    'large'     => esc_html__( 'Large (1024x1024)', 'mebel-laim' ),
+                    'full'      => esc_html__( 'Full', 'mebel-laim' )
+                ]
             ],
 
             'is_background_image_fixed'  => [

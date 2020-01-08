@@ -6,10 +6,37 @@ if ( !defined( 'FW' ) ) {
 /**
  * Promo background image and other style.
  */
-$promo_background_image = ( isset( $atts['promo_background_image'] ) && $atts['promo_background_image'] ) ? $atts['promo_background_image']['url'] : '';
+switch ( $atts['background_image_quality'] ) {
+	case 'thumbnail':
+		$promo_background_image = ( isset( $atts['promo_background_image'] ) && $atts['promo_background_image'] ) ?
+								  $atts['promo_background_image']['sizes']['thumbnail']['url'] :
+								  '';
+		break;
+
+	case 'medium':
+		$promo_background_image = ( isset( $atts['promo_background_image'] ) && $atts['promo_background_image'] ) ?
+								  $atts['promo_background_image']['sizes']['medium']['url'] :
+								  '';
+		break;
+
+	case 'large':
+		$promo_background_image = ( isset( $atts['promo_background_image'] ) && $atts['promo_background_image'] ) ?
+								  $atts['promo_background_image']['sizes']['large']['url'] :
+								  '';
+		break;
+	
+	default:
+		$promo_background_image = ( isset( $atts['promo_background_image'] ) && $atts['promo_background_image'] ) ?
+								  $atts['promo_background_image']['sizes']['full']['url'] :
+								  '';
+		break;
+}
 // Background attachment.
 $background_attachment = ( isset( $atts['is_background_image_fixed'] ) && $atts['is_background_image_fixed'] ) ? 'fixed' : 'scroll';
-// Full-width section or container-size.
+
+/**
+ * Full-width section or container-size.
+ */
 switch ( $atts['promo_is_full_width'] ) {
 	case true:
 		$background_image_for_section = $promo_background_image;
@@ -27,7 +54,10 @@ switch ( $atts['promo_is_full_width'] ) {
 		$background_attachment_for_block = $background_attachment;
 		break;
 }
-// If background image has overlay.
+
+/**
+ * If background image has overlay.
+ */
 switch ( $atts['is_overlay']['choice'] ) {
 	case 'yes':
 		$overlay_style = 'background-color: ' . ( ( isset( $atts['is_overlay']['yes']['overlay_color'] ) && $atts['is_overlay']['yes']['overlay_color'] ) ?
@@ -104,10 +134,7 @@ $promo_button_link = ( isset( $atts['promo_button_link'] ) && $atts['promo_butto
 $promo_button_text = ( isset( $atts['promo_button_text'] ) && $atts['promo_button_text'] ) ? $atts['promo_button_text'] : esc_html__( 'Перейти', 'mebel-laim' );
 // Open promo page in a new tab or not.
 $open_in_a_new_tab = ( isset( $atts['open_in_a_new_tab'] ) && ( $atts['open_in_a_new_tab'] === 'yes' ) ) ? '_blank' : '';
-
-/**
- * Promo button position and margin.
- */
+// Position.
 switch ( $atts['promo_button_position'] ) {
 	case 'center':
 		$promo_button_wrapper_style = 'text-align: center;';
