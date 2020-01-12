@@ -77,6 +77,9 @@ $promo_background_color = ( isset( $atts['promo_background_color'] ) && $atts['p
 // Promo vertical and horizontal padding value.
 $promo_padding_vertical = ( isset( $atts['promo_padding_vertical'] ) && $atts['promo_padding_vertical'] ) ? $atts['promo_padding_vertical'] . 'px' : '0';
 $promo_padding_horizontal = ( isset( $atts['promo_padding_horizontal'] ) && $atts['promo_padding_horizontal'] ) ? $atts['promo_padding_horizontal'] . 'px' : '0';
+// Promo margin top and bottom value.
+$promo_margin_top = ( isset( $atts['promo_margin_top'] ) && $atts['promo_margin_top'] ) ? $atts['promo_margin_top'] . 'px' : '0';
+$promo_margin_bottom = ( isset( $atts['promo_margin_bottom'] ) && $atts['promo_margin_bottom'] ) ? $atts['promo_margin_bottom'] . 'px' : '0';
 
 /**
  * Promo title text and style.
@@ -154,7 +157,8 @@ $promo_button_wrapper_style .= 'margin-top: ' . ( ( isset( $atts['promo_button_m
 // ALL STYLES FOR SECTION.
 $section_styles = 'background-image: url(' . $background_image_for_section . ');
 				   background-color: ' . $promo_background_color . ';
-				   background-attachment: ' . $background_attachment_for_section;
+				   background-attachment: ' . $background_attachment_for_section . ';
+				   margin: ' . $promo_margin_top . ' 0 ' . $promo_margin_bottom;
 // ALL STYLES FOR BLOCK.
 $block_styles = 'background-image: url(' . $background_image_for_block . ');
 				 padding: ' . $promo_padding_vertical . ' ' . $promo_padding_horizontal . ';

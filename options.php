@@ -14,6 +14,18 @@ $options = [
                 'desc'  => esc_html__( 'Please choose "Yes" to make promo block full-width', 'mebel-laim' )
             ],
 
+            'promo_margin_top'  => [
+                'type'  => 'text',
+                'label' => esc_html__( 'Margin Top (px)', 'mebel-laim' ),
+                'desc'  => esc_html__( 'Please enter promo block top margin value in pixels', 'mebel-laim' )
+            ],
+
+            'promo_margin_bottom'  => [
+                'type'  => 'text',
+                'label' => esc_html__( 'Margin Bottom (px)', 'mebel-laim' ),
+                'desc'  => esc_html__( 'Please enter promo block bottom margin value in pixels', 'mebel-laim' )
+            ],
+
             'promo_padding_vertical'  => [
                 'type'  => 'text',
                 'label' => esc_html__( 'Block Vertical Padding (px)', 'mebel-laim' ),
